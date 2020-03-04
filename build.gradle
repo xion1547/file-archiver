@@ -45,5 +45,5 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClassName = 'file.archiver.App'
+    mainClassName = 'fileArchiver.main'
 }
