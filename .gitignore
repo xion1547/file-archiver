@@ -7,3 +7,13 @@ build
 /gradle/
 /.idea/
 /.gradle/
+/.terraform.lock.hcl
+/terraform/.terraform.lock.hcl
+/terraform/.terraform/
+/terraform/credentials.tfvars
+/src/main/resources/
+/terraform/terraform.tfstate
+/terraform/terraform.tfstate.1623531981.backup
+/terraform/terraform.tfstate.1623538527.backup
+/terraform/terraform.tfstate.backup
+/terraform/tfplan
