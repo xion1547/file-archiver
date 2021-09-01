@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
+//@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController()
-@RequestMapping("/files1")
+@RequestMapping("/files")
 public class FileController {
     private final FileRepository fileRepository;
     private final S3Service s3Service;
@@ -21,6 +23,12 @@ public class FileController {
         this.s3Service = s3Service;
     }
 
+    @RequestMapping("/findFiles")
+    @ResponseBody
+    public List<File> findFiles(){
+        return (List<File>) fileRepository.findAll();
+    }
+
     @RequestMapping("/findAllByIdContains")
     @ResponseBody
     public List<File> findAllByIdContains(@RequestParam("ids") List<Long> ids){
@@ -29,7 +37,7 @@ public class FileController {
 
     @RequestMapping("/findAllByFilePath")
     @ResponseBody
-    public List<File> findAllByFilePath(@RequestParam("filePath") List<String> filePath){
+    public List<File> findAllByFilePath(@RequestParam("filePath") String filePath){
         return fileRepository.findAllByFilePath(filePath);
     }
 
@@ -43,7 +51,7 @@ public class FileController {
 
     @DeleteMapping("/deleteFileByIdEquals")
     void deleteFileByIdEquals(@RequestParam("id") Long id){
-        fileRepository.deleteFileByIdEquals(id);
+        fileRepository.deleteById(id);
     }
 
     @RequestMapping("/generatePresignUrls")

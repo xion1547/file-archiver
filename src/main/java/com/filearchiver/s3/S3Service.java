@@ -39,9 +39,10 @@ public class S3Service {
             filePathResult.append(result[i]).append("/");
         }
         filePathResult = new StringBuilder(filePathResult.substring(0, filePathResult.length() - 1));
-        if (!amazonS3.doesObjectExist(s3Bucket, filePath))
+        String filePathResultString = filePathResult.toString();
+        if (!amazonS3.doesObjectExist(s3Bucket, filePathResultString))
             return "File does not exist!";
-        return generateURL(result[2], filePathResult.toString(), HttpMethod.GET);
+        return generateURL(result[2], filePathResultString, HttpMethod.GET);
     }
 
     public String save(String fileName){

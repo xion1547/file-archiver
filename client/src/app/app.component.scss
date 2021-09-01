@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: 'Cormorant+Garamond', sans-serif;
+  color: #FFCB9A;
+  background: #116466;
+  overflow-x: hidden;
+  padding: 0;
+  text-align: center;
+}
+
+section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 400px;
+}
+
+.spacer {
+  aspect-ratio: 770/141;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+}
+
+.layer {
+  background-image: url("./stacked-waves-haikei.svg");
+}
+
+.flip {
+  transform: rotate(180deg);
+}
+
+.color1 {
+  background-color: #2C3531;
+}
+
+.color2 {
+  background-color: #116466;
+}
+
+.color3 {
+  background-color: #D9B08C;
+}
+
+.color4 {
+  background-color: #FFCB9A;
+}
+
+.color5 {
+  background-color: #D1E8E2;
+}
+
+.navbar-nav.mr-auto li a{
+  color: #FFCB9A;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .mr-auto {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 500px) {
+  .my-lg-0 {
+    position: absolute;
+    left: 87%;
+  }
+}
+
+.navbar a{
+  color: #FFCB9A;
+}
+
+.navbar a:hover{
+  color: #D9B08C;
+}
+
+.navbar-nav.mr-auto li a:active{
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 25%;
+}
+
+.navbar-nav.mr-auto li a:hover {
+  color: #D9B08C;
+  left: 0.2em;
+}
