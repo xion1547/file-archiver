@@ -1,7 +1,17 @@
 <h2>My Files</h2>
-<ul class = "files">
-  <li *ngFor="let file of files">
-    <span class="number">{{file.id}}</span> {{file.filePath}}
-  </li>
-</ul>
 
+
+<table>
+  <tr *ngFor="let file of allFiles | slice: page * pageSize : (page+1) * pageSize">
+    {{file.filePath}}
+  </tr>
+</table>
+
+<mat-paginator class="paginator"
+               [length]="allFiles.length"
+               [pageIndex]=page
+               [pageSize]="5"
+               aria-label="Select page"
+               (page)="getServerData($event)"
+>
+</mat-paginator>
