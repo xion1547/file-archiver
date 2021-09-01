@@ -22,8 +22,8 @@ public class MainTest {
 
     @Test
     public void hello() throws Exception {
-        mvc.perform(get("/"))
+        mvc.perform(get("/hello"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Hello from me"));
+                .andExpect(content().string("Hello from me, World!"));
     }
 }
