@@ -2,13 +2,13 @@
 
 
 <table>
-  <tr *ngFor="let file of allFiles | slice: page * pageSize : (page+1) * pageSize">
+  <tr *ngFor="let file of files | slice: page * pageSize : (page+1) * pageSize">
     {{file.filePath}}
   </tr>
 </table>
 
 <mat-paginator class="paginator"
-               [length]="allFiles.length"
+               [length]="files.length"
                [pageIndex]=page
                [pageSize]="5"
                aria-label="Select page"
