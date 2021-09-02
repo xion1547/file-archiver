@@ -10,7 +10,7 @@
   class="paginator"
                [length]="files.length"
                [pageIndex]=page
-               [pageSize]="5"
+               [pageSize]="pageSize"
                aria-label="Select page"
                (page)="updatePage($event)"
 >
