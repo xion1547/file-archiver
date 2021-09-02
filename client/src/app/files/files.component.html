@@ -1,13 +1,13 @@
 <h2>My Files</h2>
 
 
-<table>
-  <tr *ngFor="let file of files | slice: page * pageSize : (page+1) * pageSize">
-    {{file.filePath}}
-  </tr>
-</table>
+<app-file-images
+  [files]="files | slice: page * pageSize : (page+1) * pageSize"
+  [pages]="page"></app-file-images>
 
-<mat-paginator class="paginator"
+
+<mat-paginator
+  class="paginator"
                [length]="files.length"
                [pageIndex]=page
                [pageSize]="5"
