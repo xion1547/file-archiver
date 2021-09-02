@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { FilesComponent } from './files/files.component';
 import {HttpClientModule} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FileImagesComponent } from './file-images/file-images.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FilesComponent,
+    FileImagesComponent,
   ],
   imports: [
     BrowserModule,
