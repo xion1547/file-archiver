@@ -16,12 +16,12 @@ export class FilesComponent implements OnInit {
 
   constructor(private fileService: FileService) { }
 
-  findHeroes(): void {
+  findFiles(): void {
     this.fileService.findAll().subscribe(files => this.files = files);
   }
 
   ngOnInit(): void {
-    this.findHeroes();
+    this.findFiles();
   }
 
   public updatePage(event?:PageEvent){
