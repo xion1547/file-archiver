@@ -34,15 +34,14 @@ export class FileImagesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.generateImages();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.pages) {
+    if ((changes.files.previousValue?.length == 0
+      && changes.files.currentValue?.length != 0)
+      || changes.pages?.firstChange == false) {
       this.generateImages();
     }
-    //this.generateImages();
-    console.log(changes)
   }
 
 }
