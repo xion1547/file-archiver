@@ -34,6 +34,9 @@ export class FileImagesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fileService.generateUrls(["41","101","102","103","104"].join()).subscribe(
+      url => this.urls = Object.values(url)
+    )
   }
 
   ngOnChanges(changes: SimpleChanges) {
