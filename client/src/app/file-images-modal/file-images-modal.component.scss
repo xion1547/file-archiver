@@ -1,0 +1,41 @@
+.thumbnails {
+  max-height: 400px;
+  max-width: 400px;
+  margin-left: 8px;
+  margin-bottom: 8px;
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 25px;
+  border-color: #D1E8E2;
+}
+
+.modal-content {
+  flex-direction: row;
+  justify-content: space-evenly;
+  max-height: 500px;
+  max-width: 500px;
+}
+
+.modal-body {
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0;
+  background-color: #116466;
+}
+
+.modal-image {
+  max-height: 1900px;
+  max-width: 1900px;
+  //margin-left: 8px;
+  //margin-bottom: 8px;
+  //border-style: solid;
+  //border-width: 5px;
+  //border-radius: 25px;
+  //border-color: #D1E8E2;
+}
+
+.modal-header {
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #116466;
+}
