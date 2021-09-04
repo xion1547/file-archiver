@@ -1,5 +1,5 @@
-<div fxLayout="row wrap">
-  <ng-container *ngFor="let url of urls">
-    <img class="thumbnails" src="{{url}}">
+<div>
+  <ng-container *ngFor="let url of urls; let fileName = index">
+    <app-file-images-modal [urls]="url" [fileName]="fileNames[fileName]"></app-file-images-modal>
   </ng-container>
 </div>
