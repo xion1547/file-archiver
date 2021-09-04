@@ -7,11 +7,10 @@
 
 
 <mat-paginator
-  class="paginator"
+               class="paginator"
                [length]="files.length"
                [pageIndex]=page
                [pageSize]="pageSize"
                aria-label="Select page"
-               (page)="updatePage($event)"
->
+               (page)="updatePage($event)">
 </mat-paginator>

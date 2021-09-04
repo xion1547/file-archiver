@@ -8,19 +8,23 @@ import { FilesComponent } from './files/files.component';
 import {HttpClientModule} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileImagesComponent } from './file-images/file-images.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FileImagesModalComponent } from './file-images-modal/file-images-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FilesComponent,
     FileImagesComponent,
+    FileImagesModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MatPaginatorModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

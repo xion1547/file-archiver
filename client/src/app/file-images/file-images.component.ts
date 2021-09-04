@@ -12,6 +12,7 @@ export class FileImagesComponent implements OnInit {
   @Input() files?: File[];
   @Input() pages?: number;
 
+  fileNames: string[] = [];
   urls: string[] = [];
 
   constructor(private fileService: FileService) { }
@@ -33,6 +34,18 @@ export class FileImagesComponent implements OnInit {
     }
   }
 
+  updateFileNames(): void{
+    if (this.files) {
+      for (let k = 0; k<this.files.length; k++) {
+        let tempString: string[] = [];
+        let tempName: string;
+        tempString = this.files[k].filePath.split("/");
+        tempName=tempString[tempString.length-1];
+        this.fileNames.push(tempName.substring(0,tempName.length-4));
+      }
+    }
+  }
+
   ngOnInit(): void {
   }
 
@@ -41,6 +54,7 @@ export class FileImagesComponent implements OnInit {
       && changes.files.currentValue?.length != 0)
       || changes.pages?.firstChange == false) {
       this.generateImages();
+      this.updateFileNames();
     }
   }
 

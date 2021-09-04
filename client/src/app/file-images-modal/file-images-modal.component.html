@@ -1,0 +1,20 @@
+<a href="#" (click)="show()">
+  <img class="thumbnails" src="{{urls}}" title="test" alt="test">
+</a>
+
+<!-- Creates the bootstrap modal where the image will appear -->
+<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" (click)="hide()">
+      <div class="modal-title">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">{{fileName}}</h4>
+          </div>
+        <div class="modal-body">
+          <img class="modal-image" src="{{urls}}">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
