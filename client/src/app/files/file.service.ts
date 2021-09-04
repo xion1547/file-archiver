@@ -11,15 +11,11 @@ export class FileService {
   private fileUrl: string;
 
   constructor(private http: HttpClient) {
-    this.fileUrl = 'http://localhost:8080/files';
+    this.fileUrl = 'http://ec2-52-0-127-65.compute-1.amazonaws.com:8080/files';
   }
 
   public findAll(): Observable<File[]>{
     return this.http.get<File[]>(this.fileUrl+"/findFiles");
-  }
-
-  public findAllByIdContains(ids: string): Observable<File[]>{
-    return this.http.get<File[]>(this.fileUrl+"/findAllByIdContains?ids=" + ids);
   }
 
   public generateUrls(ids: string): Observable<Map<number, string>>{
