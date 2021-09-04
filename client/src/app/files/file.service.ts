@@ -11,7 +11,7 @@ export class FileService {
   private fileUrl: string;
 
   constructor(private http: HttpClient) {
-    this.fileUrl = 'http://ec2-52-0-127-65.compute-1.amazonaws.com:8080/files';
+    this.fileUrl = 'https://ec2-52-0-127-65.compute-1.amazonaws.com:8443/files';
   }
 
   public findAll(): Observable<File[]>{
