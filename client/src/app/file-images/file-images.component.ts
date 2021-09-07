@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit, Output, SimpleChanges, EventEmitter } from '@angular/core';
 import {File} from "../files/file";
 import {FileService} from "../files/file.service";
 
@@ -8,6 +8,8 @@ import {FileService} from "../files/file.service";
   styleUrls: ['./file-images.component.scss']
 })
 export class FileImagesComponent implements OnInit {
+
+  @Output() filteredFiles: EventEmitter<number> = new EventEmitter<number>();
 
   @Input() files?: File[];
   @Input() pages?: number;
@@ -56,6 +58,7 @@ export class FileImagesComponent implements OnInit {
       || (changes.files.previousValue!= 0 && changes.files.previousValue?.length!=changes.files.currentValue?.length)) {
       this.generateImages();
       this.updateFileNames();
+      this.filteredFiles.emit(changes.files.currentValue?.length);
     }
   }
 
