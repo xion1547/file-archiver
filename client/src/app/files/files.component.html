@@ -10,12 +10,12 @@
 
 <app-file-images
   [files]="files | filter: imageName | slice: page * pageSize : (page+1) * pageSize"
-  [pages]="page"></app-file-images>
-
+  [pages]="page"
+  (filteredFiles)="updateFilteredPage($event)"></app-file-images>
 
 <mat-paginator
                class="paginator"
-               [length]="files.length"
+               [length]="pageLength"
                [pageIndex]=page
                [pageSize]="pageSize"
                aria-label="Select page"
