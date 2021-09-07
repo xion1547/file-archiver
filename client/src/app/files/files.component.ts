@@ -14,16 +14,28 @@ export class FilesComponent implements OnInit {
   files: File[] = [];
   page: number = 0;
   pageSize: number = 5;
+  pageLength: number = 0;
 
   constructor(private fileService: FileService) { }
 
   findFiles(): void {
-    this.fileService.findAll().subscribe(files => this.files = files);
+    this.fileService.findAll().subscribe(files => {
+      this.files = files
+      this.pageLength = files.length;
+    });
   }
 
   public updatePage(event?:PageEvent){
     if(event) {
       this.page = event.pageIndex;
+    }
+  }
+
+  updateFilteredPage(newFilesAmount: number){
+    if (this.imageName!="") {
+      this.pageLength = newFilesAmount;
+    } else {
+      this.pageLength = this.files.length;
     }
   }
 
