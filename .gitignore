@@ -17,3 +17,5 @@ build
 /terraform/terraform.tfstate.1623538527.backup
 /terraform/terraform.tfstate.backup
 /terraform/tfplan
+
+keystore.p12
