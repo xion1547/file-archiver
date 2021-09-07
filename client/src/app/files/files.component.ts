@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {FileService} from "./file.service";
 import { File } from "./file";
 import {PageEvent} from "@angular/material/paginator";
@@ -10,18 +10,19 @@ import {PageEvent} from "@angular/material/paginator";
 })
 export class FilesComponent implements OnInit {
 
+  imageName: string = '';
   files: File[] = [];
   page: number = 0;
   pageSize: number = 5;
+  pageLength: number = 0;
 
   constructor(private fileService: FileService) { }
 
   findFiles(): void {
-    this.fileService.findAll().subscribe(files => this.files = files);
-  }
-
-  ngOnInit(): void {
-    this.findFiles();
+    this.fileService.findAll().subscribe(files => {
+      this.files = files
+      this.pageLength = files.length;
+    });
   }
 
   public updatePage(event?:PageEvent){
@@ -30,5 +31,15 @@ export class FilesComponent implements OnInit {
     }
   }
 
+  updateFilteredPage(newFilesAmount: number){
+    if (this.imageName!="") {
+      this.pageLength = newFilesAmount;
+    } else {
+      this.pageLength = this.files.length;
+    }
+  }
 
+  ngOnInit(): void {
+    this.findFiles();
+  }
 }

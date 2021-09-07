@@ -12,8 +12,9 @@
 .modal-content {
   flex-direction: row;
   justify-content: space-evenly;
-  max-height: 500px;
-  max-width: 500px;
+  border-radius: 25px;
+  //max-height: 500px;
+  //max-width: 500px;
 }
 
 .modal-body {
@@ -21,17 +22,81 @@
   justify-content: space-around;
   padding: 0;
   background-color: #116466;
+  width: 1920px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
+@media only screen and (max-width: 1920px) {
+  .modal-body {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0;
+    background-color: #116466;
+    width: 1440px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+}
+
+@media only screen and (max-width: 1680px) {
+  .modal-body {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0;
+    background-color: #116466;
+    width: 1260px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .modal-body {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0;
+    background-color: #116466;
+    width: 1080px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+}
+
+@media only screen and (max-width: 810px) {
+  .modal-body {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0;
+    background-color: #116466;
+    width: 607px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+  .thumbnails {
+    max-height: 200px;
+    max-width: 200px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 25px;
+    border-color: #D1E8E2;
+  }
+}
+
+
+
 .modal-image {
-  max-height: 1900px;
-  max-width: 1900px;
-  //margin-left: 8px;
-  //margin-bottom: 8px;
-  //border-style: solid;
-  //border-width: 5px;
-  //border-radius: 25px;
-  //border-color: #D1E8E2;
+  //max-height: 1900px;
+  //max-width: 1900px;
+  width: 100%;
+  height: auto;
+  border-style: solid;
+  border-width: 5px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-color: #D1E8E2;
 }
 
 .modal-header {

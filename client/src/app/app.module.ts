@@ -10,6 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileImagesComponent } from './file-images/file-images.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FileImagesModalComponent } from './file-images-modal/file-images-modal.component';
+import { FormsModule } from '@angular/forms';
+import {MDBBootstrapModule} from "angular-bootstrap-md";
+import { FilterPipe } from './filter/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -17,15 +20,18 @@ import { FileImagesModalComponent } from './file-images-modal/file-images-modal.
     FilesComponent,
     FileImagesComponent,
     FileImagesModalComponent,
+    FilterPipe,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    MatPaginatorModule,
-    BrowserAnimationsModule,
-    NgbModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        MatPaginatorModule,
+        BrowserAnimationsModule,
+        NgbModule,
+        FormsModule,
+        MDBBootstrapModule.forRoot()
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

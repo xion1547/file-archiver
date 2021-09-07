@@ -8,3 +8,16 @@
   display: flex;
   align-items: center;
 }
+
+.form-inline {
+  display: flex;
+  justify-content: center;
+}
+
+.form-inline #searchBar{
+  color: #FFCB9A;
+}
+
+.form-inline ::placeholder{
+  color: #D9B08C;
+}
