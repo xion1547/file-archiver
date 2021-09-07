@@ -52,7 +52,8 @@ export class FileImagesComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     if ((changes.files.previousValue?.length == 0
       && changes.files.currentValue?.length != 0)
-      || changes.pages?.firstChange == false) {
+      || changes.pages?.firstChange == false
+      || (changes.files.previousValue!= 0 && changes.files.previousValue?.length!=changes.files.currentValue?.length)) {
       this.generateImages();
       this.updateFileNames();
     }
