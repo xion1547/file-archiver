@@ -15,6 +15,7 @@ export class FilesComponent implements OnInit {
   page: number = 0;
   pageSize: number = 5;
   pageLength: number = 0;
+  searchedName: string = '';
 
   constructor(private fileService: FileService) { }
 
@@ -25,6 +26,10 @@ export class FilesComponent implements OnInit {
     });
   }
 
+  updateSearched(){
+      this.searchedName = this.imageName;
+  }
+
   public updatePage(event?:PageEvent){
     if(event) {
       this.page = event.pageIndex;
@@ -32,7 +37,7 @@ export class FilesComponent implements OnInit {
   }
 
   updateFilteredPage(newFilesAmount: number){
-    if (this.imageName!="") {
+    if (this.searchedName!="") {
       this.pageLength = newFilesAmount;
     } else {
       this.pageLength = this.files.length;

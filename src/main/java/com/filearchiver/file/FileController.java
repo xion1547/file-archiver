@@ -43,7 +43,7 @@ public class FileController {
     @ResponseBody
     public File addFile(@RequestParam("filePath") String filePath){
         File myFile = new File();
-        myFile.setFilePath(filePath);
+        myFile.setFilePath("s3://vantou/files/"+filePath);
         return fileRepository.save(myFile);
     }
 
@@ -62,8 +62,8 @@ public class FileController {
         return mappedIdsToUrls;
     }
 
-    @PostMapping("/savePresignUrls")
-    public String savePresignUrls(@RequestParam("PresignUrsl") String url){
+    @PostMapping("/savePresignUrl")
+    public String savePresignUrls(@RequestParam("PresignUrl") String url){
         return s3Service.save(url);
     }
 
