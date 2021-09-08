@@ -46,6 +46,6 @@ public class S3Service {
     }
 
     public String save(String fileName){
-        return generateURL(s3Bucket, fileName, HttpMethod.PUT);
+        return generateURL(s3Bucket, "files/"+fileName, HttpMethod.PUT);
     }
 }
