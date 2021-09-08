@@ -4,12 +4,13 @@
 <form class="form-inline md-form mr-auto mb-4">
   <input id="searchBar" class="form-control mr-sm-2" type="text" placeholder="Search Images" aria-label="Search"
          [(ngModel)]="imageName" [ngModelOptions]="{standalone: true}">
-  <button mdbBtn size="sm" gradient="aqua" [rounded]="true" class="my-0 waves-light" mdbWavesEffect type="submit">Search</button>
+  <button mdbBtn size="sm" gradient="aqua" [rounded]="true" class="my-0 waves-light" mdbWavesEffect type="submit"
+          (click)="updateSearched()">Search</button>
 </form>
 
 
 <app-file-images
-  [files]="files | filter: imageName | slice: page * pageSize : (page+1) * pageSize"
+  [files]="files | filter: searchedName | slice: page * pageSize : (page+1) * pageSize"
   [pages]="page"
   (filteredFiles)="updateFilteredPage($event)"></app-file-images>
 
