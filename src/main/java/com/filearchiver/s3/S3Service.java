@@ -2,6 +2,7 @@ package com.filearchiver.s3;
 
 import com.amazonaws.HttpMethod;
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -47,5 +48,10 @@ public class S3Service {
 
     public String save(String fileName){
         return generateURL(s3Bucket, "files/"+fileName, HttpMethod.PUT);
+    }
+
+    public void deleteFromBucket(String fileName){
+        final DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest(s3Bucket, fileName);
+        amazonS3.deleteObject(deleteObjectRequest);
     }
 }
