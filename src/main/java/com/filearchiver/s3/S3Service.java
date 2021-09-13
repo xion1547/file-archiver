@@ -5,6 +5,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
@@ -50,8 +51,9 @@ public class S3Service {
         return generateURL(s3Bucket, "files/"+fileName, HttpMethod.PUT);
     }
 
-    public void deleteFromBucket(String fileName){
-        final DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest(s3Bucket, fileName);
+    @Async
+    public void deleteFromBucket(final String fileName){
+        final DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest(s3Bucket, "files/"+fileName);
         amazonS3.deleteObject(deleteObjectRequest);
     }
 }
