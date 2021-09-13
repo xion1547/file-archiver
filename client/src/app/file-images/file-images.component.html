@@ -1,5 +1,5 @@
-<div>
-  <ng-container *ngFor="let url of urls; let fileName = index">
-    <app-file-images-modal [urls]="url" [fileName]="fileNames[fileName]"></app-file-images-modal>
+<div class="file-images">
+  <ng-container *ngFor="let url of urls; let fileNumber = index">
+    <app-file-images-modal [url]="url" [fileName]="fileNames[fileNumber]" [fileId]="fileIds[fileNumber]"></app-file-images-modal>
   </ng-container>
 </div>
