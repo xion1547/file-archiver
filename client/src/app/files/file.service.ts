@@ -38,7 +38,7 @@ export class FileService {
     this.save(file.name).subscribe( url => {
       this.putInBucket(url, file).subscribe();
     });
-    return this.addFile(file.name);
+    return this.addFile(file.name).subscribe();
   }
 
   public deleteFile(fileId: number) {
