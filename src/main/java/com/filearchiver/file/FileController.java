@@ -41,15 +41,21 @@ public class FileController {
 
     @PostMapping("/addFile")
     @ResponseBody
-    public File addFile(@RequestParam("filePath") String filePath){
+    public File addFile(@RequestBody String filePath){
         File myFile = new File();
         myFile.setFilePath("s3://vantou/files/"+filePath);
         return fileRepository.save(myFile);
     }
 
-    @DeleteMapping("/deleteFileByIdEquals")
-    void deleteFileByIdEquals(@RequestParam("id") Long id){
+    @DeleteMapping("/deleteFileByIdEquals/{id}")
+    void deleteFileByIdEquals(@PathVariable Long id){
+        File fileToBeDeleted = fileRepository.findByID(id);
         fileRepository.deleteById(id);
+        String[] tempString;
+        String tempName;
+        tempString = fileToBeDeleted.getFilePath().split("/");
+        tempName=tempString[tempString.length-1];
+        s3Service.deleteFromBucket(tempName);
     }
 
     @RequestMapping("/generatePresignUrls")
@@ -63,8 +69,8 @@ public class FileController {
     }
 
     @PostMapping("/savePresignUrl")
-    public String savePresignUrls(@RequestParam("PresignUrl") String url){
-        return s3Service.save(url);
+    public String savePresignUrls(@RequestBody String fileName){
+        return s3Service.save(fileName);
     }
 
 }
