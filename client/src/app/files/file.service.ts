@@ -38,7 +38,11 @@ export class FileService {
     this.save(file.name).subscribe( url => {
       this.putInBucket(url, file).subscribe();
     });
-    return this.addFile(file.name).subscribe();
+    return this.addFile(file.name);
+  }
+
+  public deleteFile(fileId: number) {
+    return this.http.delete(this.fileUrl+"/deleteFileByIdEquals/" + fileId);
   }
 
 }
