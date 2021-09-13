@@ -13,4 +13,7 @@ public interface FileRepository extends PagingAndSortingRepository<File, Long> {
     @Query("select f from File f where f.filePath like %?1% order by f.filePath")
     @Nullable
     List<File> findAllByFilePath(@Param("filePath") String filePath);
+
+    @Query("select f from File f where f.id = ?1")
+    File findByID(Long id);
 }
