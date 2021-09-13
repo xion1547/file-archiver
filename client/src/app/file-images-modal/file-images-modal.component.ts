@@ -7,10 +7,12 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class FileImagesModalComponent implements OnInit {
 
-  @Input() urls?: string;
+  @Input() url?: string;
   @Input() fileName?: string;
+  @Input() fileId?: number;
 
   showModal: boolean = false;
+  showDelete: boolean = false;
 
   constructor() { }
 
@@ -19,6 +21,14 @@ export class FileImagesModalComponent implements OnInit {
   }
   hide(){
     this.showModal = false;
+  }
+
+  showDeleteMethod(){
+    this.showDelete = true;
+  }
+
+  hideDeleteMethod(event: boolean){
+    this.showDelete = event;
   }
 
   ngOnInit(): void {
