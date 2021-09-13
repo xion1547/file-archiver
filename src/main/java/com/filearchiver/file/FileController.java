@@ -48,7 +48,7 @@ public class FileController {
     }
 
     @DeleteMapping("/deleteFileByIdEquals/{id}")
-    void deleteFileByIdEquals(@PathVariable Long id){
+    public void deleteFileByIdEquals(@PathVariable Long id){
         File fileToBeDeleted = fileRepository.findByID(id);
         fileRepository.deleteById(id);
         String[] tempString;
