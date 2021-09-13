@@ -22,8 +22,24 @@ export class FileService {
     return this.http.get<Map<number, string>>(this.fileUrl+"/generatePresignUrls?PresignUrls=" +ids);
   }
 
-  public save(file: File) {
-    return this.http.post<File>(this.fileUrl, file);
+  public save(file: string): Observable<string> {
+    return this.http.post(this.fileUrl+"/savePresignUrl", file, {responseType: 'text'});
   }
+
+  public addFile(fileName: string) {
+    return this.http.post(this.fileUrl+"/addFile", fileName);
+  }
+
+  public putInBucket(url: string, file: any) {
+    return this.http.put(url, file);
+  }
+
+  public uploadToS3(file: any) {
+    this.save(file.name).subscribe( url => {
+      this.putInBucket(url, file).subscribe();
+    });
+    return this.addFile(file.name).subscribe();
+  }
+
 }
 
