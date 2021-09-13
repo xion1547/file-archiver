@@ -14,7 +14,8 @@ export class FileImagesComponent implements OnInit {
   @Input() files?: File[];
   @Input() pages?: number;
 
-  fileNames: string[] = [];
+  fileNames: string[] = ["", "", "", "", ""];
+  fileIds: number[] = [];
   urls: string[] = [];
 
   constructor(private fileService: FileService) { }
@@ -43,7 +44,8 @@ export class FileImagesComponent implements OnInit {
         let tempName: string;
         tempString = this.files[k].filePath.split("/");
         tempName=tempString[tempString.length-1];
-        this.fileNames.push(tempName.substring(0,tempName.length-4));
+        this.fileNames[k] = tempName;
+        this.fileIds[k] = this.files[k].id;
       }
     }
   }
