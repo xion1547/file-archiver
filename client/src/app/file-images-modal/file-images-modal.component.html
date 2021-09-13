@@ -1,6 +1,15 @@
-<a href="#" (click)="show()">
-  <img class="thumbnails" src="{{urls}}" title="2560x1440" alt="test">
-</a>
+<div id="images">
+  <div class="boxes">
+    <a href="#" (click)="show()">
+      <img class="thumbnails" src="{{url}}" title="2560x1440" alt="test">
+    </a>
+    <button type="button" class="btn-sm btn-dark btn-floating"
+            data-mdb-toggle="modal" data-mdb-target="#deleteModal"
+            (click)="showDeleteMethod()">
+      <i class="fas fa-times-circle"></i>
+    </button>
+  </div>
+</div>
 
 <!-- Creates the bootstrap modal where the image will appear -->
 <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -8,13 +17,19 @@
     <div class="modal-content" (click)="hide()">
       <div class="modal-title">
         <div class="modal-header">
-          <h4 class="modal-title" id="modal-basic-title">{{fileName}}</h4>
+          <h4 class="modal-title" id="modal-basic-title">{{fileName ? fileName.substr(0, fileName.length-4) : fileName}}</h4>
           </div>
         <div class="modal-body">
-          <img class="modal-image" src="{{urls}}">
+          <img class="modal-image" src="{{url}}">
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+
+<app-file-images-modal-delete [showDelete]="showDelete" [fileId]="fileId" (setDeleteFalse)="hideDeleteMethod($event)"></app-file-images-modal-delete>
