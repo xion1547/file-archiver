@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import {MDBBootstrapModule} from "angular-bootstrap-md";
 import { FilterPipe } from './filter/filter.pipe';
 import { AddFilesComponent } from './add-files/add-files.component';
+import { FileImagesModalDeleteComponent } from './file-images-modal-delete/file-images-modal-delete.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AddFilesComponent } from './add-files/add-files.component';
     FileImagesModalComponent,
     FilterPipe,
     AddFilesComponent,
+    FileImagesModalDeleteComponent,
   ],
     imports: [
         BrowserModule,
