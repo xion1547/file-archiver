@@ -1,0 +1,9 @@
+<div class="adding">
+<button mdbBtn size="sm" gradient="aqua" [rounded]="true" class="my-0 waves-light" mdbWavesEffect type="submit"
+        (click)="showUpload()">Upload Wallpaper</button>
+<div class="choosing" *ngIf="show">
+  <input type="file" class="form-control" id="customFile" (change)="fileChanged($event)"/>
+  <button mdbBtn size="sm" gradient="aqua" [rounded]="true" class="my-0 waves-light" mdbWavesEffect type="submit"
+          (click)="uploadFile()">Upload!</button>
+</div>
+</div>
