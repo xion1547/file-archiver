@@ -12,6 +12,7 @@
 <app-file-images
   [files]="files | filter: searchedName | slice: page * pageSize : (page+1) * pageSize"
   [pages]="page"
+  [search]="searchedName"
   (filteredFiles)="updateFilteredPage($event)"></app-file-images>
 
 <mat-paginator
