@@ -38,6 +38,7 @@ export class FilesComponent implements OnInit {
 
   updateFilteredPage(newFilesAmount: number){
     if (this.searchedName!="") {
+      Promise.resolve().then(() => this.page=0);
       this.pageLength = newFilesAmount;
     } else {
       this.pageLength = this.files.length;
