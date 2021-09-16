@@ -13,10 +13,13 @@ export class FileImagesComponent implements OnInit {
 
   @Input() files?: File[];
   @Input() pages?: number;
+  @Input() search?: string;
 
   fileNames: string[] = ["", "", "", "", ""];
   fileIds: number[] = [];
   urls: string[] = [];
+  urlsMap = new Map<string, string>();
+  localStorage: File[] = [];
 
   constructor(private fileService: FileService) { }
 
@@ -28,11 +31,17 @@ export class FileImagesComponent implements OnInit {
     return result;
   }
 
-  generateImages(): void {
+  generateImages(changes: SimpleChanges): void {
     if (this.files) {
       this.fileService.generateUrls(this.getIds(this.files))
-        .subscribe(files => {
-          this.urls = Object.values(files)
+        .subscribe((files: any) => {
+          if (this.files) {
+            this.files.forEach(file => {
+              this.urlsMap.set(file.filePath, files[file.id]);
+              this.localStorage.push(file);
+            })
+          }
+          this.updateNamesAndUrls(changes);
         });
     }
   }
@@ -50,17 +59,37 @@ export class FileImagesComponent implements OnInit {
     }
   }
 
+  updateNamesAndUrls(changes: SimpleChanges): void {
+    this.updateFileNames();
+    this.addIntoUrls(changes);
+    console.log(this.urls)
+    if(changes.search?.currentValue != changes.search?.previousValue) {
+      this.filteredFiles.emit(changes.files.currentValue?.length);
+    }
+  }
+
+  addIntoUrls(changes: SimpleChanges){
+    const tempUrls: any[] = [];
+    changes.files.currentValue.forEach((file: File) => {
+      let a: any = this.urlsMap.get(file.filePath);
+      tempUrls.push(a);
+    })
+    this.urls = tempUrls.map(el => el);
+  }
+
   ngOnInit(): void {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if ((changes.files.previousValue?.length == 0
-      && changes.files.currentValue?.length != 0)
+    if ((changes.files.previousValue?.length == 0 && changes.files.currentValue?.length != 0)
       || changes.pages?.firstChange == false
-      || (changes.files.previousValue!= 0 && changes.files.previousValue?.length!=changes.files.currentValue?.length)) {
-      this.generateImages();
-      this.updateFileNames();
-      this.filteredFiles.emit(changes.files.currentValue?.length);
+      || (changes.files.previousValue != 0 && changes.files.previousValue?.length != changes.files.currentValue?.length)) {
+      if (changes.files.currentValue.every((val: File) => this.localStorage.includes(val))) {
+        this.updateNamesAndUrls(changes)
+      } else {
+        this.generateImages(changes)
+      }
+
     }
   }
 
