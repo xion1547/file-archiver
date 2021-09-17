@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import { File } from "./file";
@@ -34,11 +34,14 @@ export class FileService {
     return this.http.put(url, file);
   }
 
-  public uploadToS3(file: any) {
-    this.save(file.name).subscribe( url => {
-      this.putInBucket(url, file).subscribe();
+  public uploadToS3(imageFile: any, addedFile: EventEmitter<any>) {
+    this.save(imageFile.name).subscribe( url => {
+      this.putInBucket(url, imageFile).subscribe(() => {
+        this.addFile(imageFile.name).subscribe(file => {
+          addedFile.emit(file);
+        })
+      });
     });
-    return this.addFile(file.name).subscribe();
   }
 
   public deleteFile(fileId: number) {
