@@ -32,4 +32,6 @@
   rel="stylesheet"
 />
 
-<app-file-images-modal-delete [showDelete]="showDelete" [fileId]="fileId" (setDeleteFalse)="hideDeleteMethod($event)"></app-file-images-modal-delete>
+<app-file-images-modal-delete [showDelete]="showDelete" [fileId]="fileId"
+                              (setDeleteFalse)="hideDeleteMethod($event)"
+                              (deletedID)="deleteID($event)"></app-file-images-modal-delete>
