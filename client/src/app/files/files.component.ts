@@ -36,6 +36,21 @@ export class FilesComponent implements OnInit {
     }
   }
 
+  addFile(event: File) {
+    this.files.push(event);
+    this.pageLength = this.files.length;
+    console.log(this.files);
+  }
+
+  deleteFile(event: number){
+    for(let i = 0; i<this.files.length; i++){
+      if (this.files[i].id == event) {
+        this.files.splice(i, 1);
+        this.pageLength=this.files.length;
+      }
+    }
+  }
+
   updateFilteredPage(newFilesAmount: number){
     if (this.searchedName!="") {
       Promise.resolve().then(() => this.page=0);
