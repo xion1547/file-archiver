@@ -10,6 +10,7 @@ import {FileService} from "../files/file.service";
 export class FileImagesComponent implements OnInit {
 
   @Output() filteredFiles: EventEmitter<number> = new EventEmitter<number>();
+  @Output() deletedId: EventEmitter<number> = new EventEmitter<number>();
 
   @Input() files?: File[];
   @Input() pages?: number;
@@ -22,6 +23,10 @@ export class FileImagesComponent implements OnInit {
   localStorage: File[] = [];
 
   constructor(private fileService: FileService) { }
+
+  deleteId(event: number) {
+    this.deletedId.emit(event);
+  }
 
   getIds(array: File[]): string{
     let result: string = "";
@@ -62,7 +67,6 @@ export class FileImagesComponent implements OnInit {
   updateNamesAndUrls(changes: SimpleChanges): void {
     this.updateFileNames();
     this.addIntoUrls(changes);
-    console.log(this.urls)
     if(changes.search?.currentValue != changes.search?.previousValue) {
       this.filteredFiles.emit(changes.files.currentValue?.length);
     }
