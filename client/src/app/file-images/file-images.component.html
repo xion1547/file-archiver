@@ -1,5 +1,5 @@
 <div class="file-images">
   <ng-container *ngFor="let url of urls; let fileNumber = index">
-    <app-file-images-modal [url]="url" [fileName]="fileNames[fileNumber]" [fileId]="fileIds[fileNumber]"></app-file-images-modal>
+    <app-file-images-modal [url]="url" [fileName]="fileNames[fileNumber]" [fileId]="fileIds[fileNumber]" (deletedID)="deleteId($event)"></app-file-images-modal>
   </ng-container>
 </div>
