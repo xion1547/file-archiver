@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-file-images-modal',
@@ -6,6 +6,8 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./file-images-modal.component.scss']
 })
 export class FileImagesModalComponent implements OnInit {
+
+  @Output() deletedID: EventEmitter<number> = new EventEmitter<number>();
 
   @Input() url?: string;
   @Input() fileName?: string;
@@ -29,6 +31,10 @@ export class FileImagesModalComponent implements OnInit {
 
   hideDeleteMethod(event: boolean){
     this.showDelete = event;
+  }
+
+  deleteID(event: number){
+    this.deletedID.emit(event);
   }
 
   ngOnInit(): void {
