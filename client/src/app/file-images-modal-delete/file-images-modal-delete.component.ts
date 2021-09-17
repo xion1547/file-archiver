@@ -9,6 +9,7 @@ import {FileService} from "../files/file.service";
 export class FileImagesModalDeleteComponent implements OnInit {
 
   @Output() setDeleteFalse: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() deletedID: EventEmitter<number> = new EventEmitter<number>();
 
   @Input() showDelete?: boolean;
   @Input() fileId?: number;
@@ -21,7 +22,9 @@ export class FileImagesModalDeleteComponent implements OnInit {
 
   deleteFile(){
     if(this.fileId) {
-      this.fileService.deleteFile(this.fileId).subscribe();
+      this.fileService.deleteFile(this.fileId).subscribe( () => {
+        this.deletedID.emit(this.fileId);
+      });
     }
   }
 
