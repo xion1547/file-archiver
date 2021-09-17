@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FileService} from "../files/file.service";
+import {File} from "../files/file";
 
 @Component({
   selector: 'app-add-files',
@@ -7,6 +8,8 @@ import {FileService} from "../files/file.service";
   styleUrls: ['./add-files.component.scss']
 })
 export class AddFilesComponent implements OnInit {
+
+  @Output() addedFile: EventEmitter<any> = new EventEmitter<File>();
 
   show: boolean = false;
   selectedFile?: File;
@@ -26,7 +29,7 @@ export class AddFilesComponent implements OnInit {
     if (this.selectedFile == undefined) {
       console.log('no file selected');
     } else if (this.selectedFile) {
-      this.fileService.uploadToS3(this.selectedFile);
+      this.fileService.uploadToS3(this.selectedFile, this.addedFile);
     } else {
       console.log("Error happened");
     }
